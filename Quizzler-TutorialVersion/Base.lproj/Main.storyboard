@@ -44,6 +44,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="True">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="answerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VEo-x2-iQY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJY-RJ-NlG">
                                                 <rect key="frame" x="0.0" y="85" width="377" height="75"/>
@@ -53,6 +56,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="False">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="answerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IB2-1T-muX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -93,6 +99,13 @@
                             <constraint firstItem="i3q-1d-6rf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="O2Y-66-t1l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="falseButton" destination="zJY-RJ-NlG" id="bCY-Uy-yJX"/>
+                        <outlet property="progressBar" destination="J23-eD-b7V" id="vHq-bg-SCa"/>
+                        <outlet property="questionLabel" destination="kp5-SI-Jqf" id="T3m-5a-tsF"/>
+                        <outlet property="scoreLabel" destination="JPh-n7-xXd" id="E3A-Gc-q2x"/>
+                        <outlet property="trueButton" destination="OQo-ik-29e" id="GHO-QP-b3O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
