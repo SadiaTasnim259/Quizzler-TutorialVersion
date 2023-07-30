@@ -1,24 +1,17 @@
 //
-//  ViewController.swift
+//  QuizBrain.swift
 //  Quizzler-TutorialVersion
 //
-//  Created by Sadia on 28/7/23.
+//  Created by Sadia on 30/7/23.
 //
 
-import UIKit
+import Foundation
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var progressBar: UIProgressView!
-    
+struct QuizBrain{
     var questionNumber = 0
     var score = 0
     var correctAns = ""
-    var timer = Timer()
+  
     
     let quiz = [
              Question(q: "A slug's blood is green.", a: "True"),
@@ -35,44 +28,26 @@ class ViewController: UIViewController {
              Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
          ]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-        updateQuestion()
+    mutating func checkAnswer(_ userAnswer:String){
+        
+        if userAnswer == correctAns {
+            score += 1
+        }
+    }
+    
+    func getProgress() -> Float{
+        let progressValue = Float(questionNumber+1)/Float(quiz.count)
+        return progressValue
     }
     
     
-    @IBAction func answerButtonPressed(_ sender: UIButton) {
-        timer.invalidate()
-        var givenAns = sender.currentTitle
-        
-        if givenAns == correctAns {
-            score += 1
-            sender.backgroundColor = UIColor.green
-        }else{
-            sender.backgroundColor = UIColor.red
-        }
-        
+    mutating func nextQuestion(){
         if questionNumber < (quiz.count-1){
             questionNumber += 1
         }else{
+            score = 0
             questionNumber = 0
         }
-        
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateQuestion), userInfo: nil, repeats: true)
-        
-        updateQuestion()
+      
     }
-    
-    @objc func updateQuestion(){
-        
-        questionLabel.text = quiz[questionNumber].q
-        correctAns = quiz[questionNumber].a
-        scoreLabel.text = "Score: \(score)"
-        
-    }
-    
-    
-
 }
-
